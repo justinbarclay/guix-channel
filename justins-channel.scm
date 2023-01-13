@@ -1,9 +1,10 @@
 (define-module (justins-channel)
+  #:use-module (gnu packages)
   #:use-module (gnu packages autotools)
   #:use-module (gnu packages emacs)
   #:use-module (gnu packages imagemagick)
   #:use-module (gnu packages sqlite)
-  #:use-module (gnu packages)
+  #:use-module (gnu packages shells)
   #:use-module (guix build-system font)
   #:use-module (guix build-system gnu)
   #:use-module (guix download)
@@ -130,7 +131,7 @@ Awesome, Devicons, Octicons, and others.")
 
 ;; Programs
 (define-public emacs-master
-  (let ((commit "073da412a139e317959f56e359ed12de726a0a35")
+  (let ((commit "f32ce2e38cfc99d869a3ae07e912d7ce33772f12")
         (revision "1"))
     (package
      (inherit emacs)
@@ -150,7 +151,7 @@ Awesome, Devicons, Octicons, and others.")
                                 "emacs-native-comp-driver-options.patch"))
        (sha256
         (base32
-         "0y53bbwj3fqfki53k2178cs4myvb4w466svkz6sgl4v296xvmys2"))))
+         "0fs6a7mxlcpha0z25i9w1ymxbp4y56gqfyj6ss21i9ysf0ahr7cb"))))
      (inputs
       (modify-inputs (package-inputs emacs)
                      (prepend sqlite)))
@@ -171,11 +172,12 @@ Awesome, Devicons, Octicons, and others.")
 ;;               (file-name (git-file-name name version))
 ;;               (sha256
 ;;                (base32
-;;                 ""))))
+;;                 "13fn0ni9fkwzy97xc220z433mj0sa7p85srr55wz31kl3w8946yp"))))
+;;     (inputs (list zsh))
 ;;     (build-system gnu-build-system)
 ;;     (home-page "https://github.com/zdharma-continuum/zinit")
 ;;     (synopsis "Flexible and fast ZSH plugin manager")
 ;;     (description
 ;;      "Zinit is a flexible and fast Zshell plugin manager that will allow you
 ;; to install everything from GitHub and other sites.")
-;;     (license license:expat)))
+;;     (license expat)))
