@@ -5,6 +5,9 @@
   #:use-module (gnu packages imagemagick)
   #:use-module (gnu packages sqlite)
   #:use-module (gnu packages shells)
+  #:use-module (gnu packages base)
+  #:use-module (gnu packages gcc)
+  #:use-module (gnu packages text-editors)
   #:use-module (guix build-system font)
   #:use-module (guix build-system gnu)
   #:use-module (guix download)
@@ -131,7 +134,7 @@ Awesome, Devicons, Octicons, and others.")
 
 ;; Programs
 (define-public emacs-master
-  (let ((commit "f32ce2e38cfc99d869a3ae07e912d7ce33772f12")
+  (let ((commit "167bf3408e437704b27171c6fad5d15bbc623b3a")
         (revision "1"))
     (package
      (inherit emacs)
@@ -151,10 +154,10 @@ Awesome, Devicons, Octicons, and others.")
                                 "emacs-native-comp-driver-options.patch"))
        (sha256
         (base32
-         "0fs6a7mxlcpha0z25i9w1ymxbp4y56gqfyj6ss21i9ysf0ahr7cb"))))
+         "1fqiyvaymlwnv45z2frnz8qr4rpqbvlmv42jhwdvcajy3acjd5rv"))))
      (inputs
       (modify-inputs (package-inputs emacs)
-                     (prepend sqlite)))
+                     (prepend sqlite tree-sitter)))
      (native-inputs
       (modify-inputs (package-native-inputs emacs)
                      (prepend autoconf))))))
