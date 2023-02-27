@@ -132,36 +132,6 @@ Awesome, Devicons, Octicons, and others.")
                (base32
                 "1xrfs83vr3gdnrag7k7jvb88cqvp173a8hm3frr6fyr100h9a3bd"))))))
 
-;; Programs
-(define-public emacs-master
-  (let ((commit "167bf3408e437704b27171c6fad5d15bbc623b3a")
-        (revision "1"))
-    (package
-     (inherit emacs)
-     (name "emacs-master")
-     (version (git-version "30.0.50" revision commit))
-     (source
-      (origin
-       (inherit (package-source emacs))
-       (method git-fetch)
-       (uri (git-reference
-             (url "https://git.savannah.gnu.org/git/emacs.git/")
-             (commit commit)))
-       (file-name (git-file-name name version))
-       ;; emacs-source-date-epoch.patch is no longer necessary
-       (patches (search-patches "emacs-exec-path.patch"
-                                "emacs-fix-scheme-indent-function.patch"
-                                "emacs-native-comp-driver-options.patch"))
-       (sha256
-        (base32
-         "1fqiyvaymlwnv45z2frnz8qr4rpqbvlmv42jhwdvcajy3acjd5rv"))))
-     (inputs
-      (modify-inputs (package-inputs emacs)
-                     (prepend sqlite tree-sitter)))
-     (native-inputs
-      (modify-inputs (package-native-inputs emacs)
-                     (prepend autoconf))))))
-
 ;; Shell
 ;; (define-public zinit
 ;;   (package
